@@ -2,8 +2,8 @@ import { ConvexClientProvider } from "@/components/providers/convex-provider";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { Toaster } from "sonner";
 import "./globals.css";
-
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -16,13 +16,13 @@ export const metadata: Metadata = {
         url: "/logo.svg",
         href: "/logo.svg",
       },
-       {
+      {
         media: "(prefers-color-scheme: dark)",
         url: "/logo-dark.svg",
         href: "/logo-dark.svg",
-      }
-    ]
-  }
+      },
+    ],
+  },
 };
 
 export default function RootLayout({
@@ -40,10 +40,11 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
             storageKey="jotion-theme"
-            >
+          >
+            <Toaster position="bottom-center" />
             {children}
           </ThemeProvider>
-      </ConvexClientProvider>
+        </ConvexClientProvider>
       </body>
     </html>
   );
